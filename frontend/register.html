@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Registration</h1>
+    <input type="text" placeholder="Enter username..." />
+    <input type="text" placeholder="Enter Email..." />
+    <input type="password" placeholder="Enter password..." />
+    <button onclick="handleRegister() ">Sign Up!</button>
+  </body>
+  <script>
+    const baseurl = "http://localhost:8080";
+    const handleRegister = () => {
+      fetch(`${baseurl}`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({}),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(error));
+    };
+  </script>
+</html>
