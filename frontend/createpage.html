@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Notes</title>
+  </head>
+  <body>
+    <h1>Create Your own Notes</h1>
+    <div>
+      <input type="text" id="title" placeholder="Enter Title..." required />
+      <input type="text" id="body" placeholder="Enter Note body" required />
+      <button onclick="createNote()">Create</button>
+    </div>
+    <script>
+      const baseurl = "https://nsdnotes1.onrender.com";
+      const createNote = () => {
+        fetch(`${baseurl}/notes/create`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            title: document.getElementById("title").value,
+            body: document.getElementById("body").value,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.log(error));
+      };
+    </script>
+  </body>
+</html>

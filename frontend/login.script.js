@@ -15,7 +15,7 @@ const handleLogin = () => {
     .then((data) => {
       console.log(data);
       localStorage.setItem("token", data.token);
-      location.href = "./dashboard.html"
+      location.href = "./index.html";
     })
     .catch((error) => console.log(error));
 };
