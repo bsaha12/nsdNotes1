@@ -8,6 +8,40 @@ const noteRouter = express.Router();
 noteRouter.use(auth);
 
 // POST method
+/**
+ * @swagger
+ * /notes/create:
+ *   post:
+ *     summary: Create a new note
+ *     tags: [Notes]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Note"
+ *     responses:
+ *       200:
+ *         description: New note created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   description: Confirmation message
+ *       400:
+ *         description: Bad request. Check the request payload.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Error message
+ */
 noteRouter.post("/create", async (req, res) => {
   try {
     const note = new NoteModel(req.body);
